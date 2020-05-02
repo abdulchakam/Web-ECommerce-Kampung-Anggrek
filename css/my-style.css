@@ -1,0 +1,330 @@
+
+#landingpage{
+	height: 100vh;
+}
+#produk{
+	margin-top: -35px;
+	height: 200vh;
+	background-image: url("../assets/images/background.png");
+	background-repeat: repeat;
+}
+
+#produk-detail{
+	height: 100vh;
+	background-image: url("../assets/images/background.png");
+	background-repeat: repeat;
+}
+
+#cart{
+	height: auto;
+	background-image: url("../assets/images/background.png");
+	background-repeat: repeat;
+}
+
+#form{
+	height: auto;
+	background-image: url("../assets/images/background.png");
+	background-repeat: repeat;
+}
+
+/* JUMBOTRON */
+.jumbotron{
+	background-image : url('../assets/images/jumbotron-01.png');
+	background-size : cover;
+	height: 100VH;
+	font-family: Montserrat;
+	}
+.jumbotron h1{
+	font-family: Montserrat SemiBold;
+	font-size: 25px;
+	margin-top: 220px;
+}
+.jumbotron p{
+	font-size: 15px;
+}
+/* END JUMBOTRON */
+
+
+/* NAVBAR */
+.navbar-cart{
+	background:rgb(222, 232, 247) !important;
+	box-shadow: 2px 2px 5px #d5dde8;
+	height: 70px;
+}
+.navbar-default{
+	transition:500ms ease;
+	background:transparent;
+	padding-left:80px;
+	padding-right:180px;
+	
+	}
+	.navbar-default.scrolled{
+			background:rgb(222, 232, 247) !important;
+			box-shadow: 2px 2px 5px #d5dde8;
+			height: 70px;
+	}
+/* END NAVBAR */
+
+
+/* Components Buttons */
+.btn-custom-primary{
+	font-family: Montserrat SemiBold;
+	color: #0DA1B5 !important;
+	background: #E3EBF7;
+	box-shadow:  5px 5px 7px #d5dde8, 
+							  -5px -5px 7px #f1f9ff;
+}
+.btn-custom-primary:hover{
+	background:#E3EBF7 ;
+	color: rgb(92, 189, 202)  !important;
+	box-shadow: inset 5px 5px 7px #d5dde8, 
+						inset -5px -5px 7px #f1f9ff;
+	cursor: pointer;
+}
+
+.btn-search{
+	background-color: #0DA1B5 !important ;
+}
+
+.btn-add-to-cart{
+	font-family: Montserrat Medium;
+	border-radius: 10px;
+	background: #F8F9FC !important;
+	box-shadow:  5px 5px 9px #dfe0e3, 
+							 -5px -5px 9px #ffffff;
+	
+}
+
+.btn-add-to-cart:hover{
+	font-family: Montserrat Medium;
+	border-radius: 6px;
+	background: #0DA1B5 !important;
+	box-shadow: inset 3px 3px 6px #096a77, 
+							inset -3px -3px 6px #11d8f3;
+	color:#F8F9FC !important;
+	cursor: pointer;
+}
+
+.btn-login-cus{
+	border-radius: 8px !important;
+	background: #E3EBF7;
+	box-shadow:  4px 4px 8px #dae2ed, 
+							 -4px -4px 8px #ecf4ff;
+	color:#0DA1B5 !important;
+}
+.btn-login-cus:hover{
+	transition: all ease;
+border-radius: 8px;
+background: #E3EBF7;
+box-shadow: inset 4px 4px 8px #dae2ed, 
+						inset -4px -4px 8px #ecf4ff;
+						cursor: pointer;
+}
+
+.btn-register{
+	border-radius: 8px !important;
+	background:  #0DA1B5 !important ;
+	box-shadow:  4px 4px 8px #dae2ed, 
+							 -4px -4px 8px #ecf4ff;
+	color:#E3EBF7 !important;
+}
+
+.btn-register:hover{
+	transition: all ease;
+	border-radius: 8px;
+	background: #0DA1B5 !important;
+	box-shadow: inset 4px 4px 8px #0c94a7, 
+							inset -4px -4px 8px #0eaec3;
+}
+
+.btn-hapus{
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow: inset 5px 5px 4px #f1f2f4, 
+							inset -5px -5px 4px #ffffff;
+}
+
+.btn-sidebar{
+	border-radius: 50%;
+	background: #2C53C5;
+	box-shadow:  5px 5px 7px #284cb3, 
+             -5px -5px 7px #305ad7;
+}
+
+.btn-plus{
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow:  4px 4px 4px #d3d4d6, 
+							 -4px -4px 4px #ffffff;
+							 color: #4dec75 !important;
+}
+
+.btn-min{
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow:  4px 4px 4px #d3d4d6, 
+							 -4px -4px 4px #ffffff;
+							 color: #ec5f4d !important;
+}
+
+.frm-qty{
+	height: 35px;
+	width: 60px;
+	border-radius: 5px;
+background: #F8F9FC;
+box-shadow: inset 4px 4px 6px #ecedef, 
+						inset -4px -4px 6px #ffffff;
+						text-align: center;
+						font-weight: 700;
+}
+/* End Components Buttons  */
+
+
+/* Card Style Custom*/
+.card-style{
+	height: 370px !important;
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow:  6px 6px 12px #eeeff2, 
+							  -6px -6px 12px #ffffff;
+}
+
+.card-style-cart{
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow: inset 5px 5px 10px #eeeff2, 
+            inset -5px -5px 10px #ffffff;
+}
+.card-style:hover{
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow: inset 5px 5px 10px #eeeff2, 
+						inset -5px -5px 10px #ffffff;
+	cursor: pointer;
+}
+
+.images-product{
+	width: 100%;
+	height: 150px;
+}
+.card-title{
+	font-family: Montserrat SemiBold;
+	font-size: medium !important;
+}
+
+.card-text{
+	font-family: Montserrat;
+	font-size: small !important;
+	color: rgb(182, 190, 202)  ;
+}
+
+.card-text-price{
+	font-family: Montserrat Medium;
+	font-size: medium !important;
+	font-weight: 600;
+	color: #0DA1B5;
+}
+
+.card-text-subtotal{
+	font-family: Montserrat Medium;
+	font-size: medium !important;
+	font-weight: 600;
+	color: #0DA1B5;
+}
+
+.card-text-total{
+	font-family: Montserrat Medium;
+	font-size: x-large !important;
+	font-weight: bolder;
+	color: rgb(236, 92, 25);
+}
+
+.card-text-price-cart{
+	font-family: Montserrat Medium;
+	font-size: small !important;
+	font-weight: 400;
+	color: #0DA1B5;
+}
+
+.card-form{
+	border-radius: 15px;
+	background: #F8F9FC;
+	box-shadow:  5px 5px 6px #e7e8ea, 
+							 -5px -5px 6px #ffffff;
+}
+.form-style{
+	height: 40px;
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow: inset 5px 5px 10px #f1f2f4, 
+							inset -5px -5px 10px #ffffff;
+							color:#0DA1B5 !important ;
+}
+.card-detail,.card-detail-member{
+	border-radius: 10px;
+	background: #F8F9FC;
+		box-shadow: inset 5px 5px 5px #f3f4f7, 
+            inset -5px -5px 5px #fdfeff;
+}
+.card-img-detail{
+	height: 450px;
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow:  5px 5px 5px #d8d9db, 
+							 -5px -5px 5px #ffffff;
+}
+
+.card-title-detail{
+	font-family: Montserrat SemiBold;
+	font-size: x-large !important;
+	color: #0DA1B5 !important;
+	margin-top: 10px;
+}
+/* Card Style Custom */
+
+
+/* Tabel Style */
+.table-borderless td{
+    border: 0;
+}
+
+
+/* Modal Checkout */
+.modal-checkout{
+	font-family: Montserrat Medium;
+}
+.text-data{
+	font-family: Montserrat Medium;
+	font-size: 12px;
+}
+.text-data2{
+	font-family: Montserrat Medium !important;
+	font-size: 15px;
+	margin-top: -5px;
+}
+
+.text-detail-title{
+	font-family: Montserrat Semibold !important;
+	font-size: 12px;
+}
+.text-detail, .text-detail-member{
+	font-family: Montserrat !important;
+	font-size: 15px;
+	margin-top: -5px;
+}
+
+.text-detail-harga{
+	font-family: Montserrat !important;
+	font-size: 18px;
+	margin-top: -5px;
+	font-weight: 500;
+	color: #0DA1B5 !important;
+}
+.text-detail-subtotal{
+	font-family: Montserrat !important;
+	font-size: 20 px;
+	margin-top: -5px;
+	font-weight: 600;
+	color: rgb(236, 92, 25) !important;
+}
+
