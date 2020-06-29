@@ -21,7 +21,8 @@
 		$response = new usr();   
 		$response->success = 1;   
 		$response->message = "Selamat datang ".$row['nm_kons'];   
-		$response->email = $row['email'];   
+		$response->email = $row['email'];
+		$response->kd_kons = $row['kd_kons'];		
 		die(json_encode($response));   
 	} else {   
 		$response = new usr();   

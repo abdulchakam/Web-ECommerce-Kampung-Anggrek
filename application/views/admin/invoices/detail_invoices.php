@@ -35,7 +35,20 @@
 
 					<!-- TABLE CONTENT -->
 					<div class="card">
-						<h5 class="card-header">Detail Invoices</h5>
+					<div class="card-header">
+						<div class="row justify-content-between">
+							<div class="col-md-4">
+								<h5>Detail Invoices</h5>
+							</div>
+							<div class="col-md-4">
+								<?=anchor('admin/invoices/cetak_nota/'.$invoice->id,'Cetak PDF',
+									['class'=>'btn btn-default btn-sm btn-danger float-right']);
+								?>
+							</div>
+						</div>
+						
+						
+					</div>
 						<div class="card-body">
 							<h5 class="card-title">Items Ordered in Invoice #<?=$invoice->id?></h5>
 							

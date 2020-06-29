@@ -6,12 +6,15 @@ class Produk extends CI_Controller {
 	{
 	parent::__construct();
 	$this->load->model('produk_model');
+
 	}
 
 	public function index()
 	{
 		$data["produks"] = $this->produk_model->getAll();
+		$data["produks2"] = $this->produk_model->getBestSell();
 		$this->load->view('Frontend/index', $data);
+
 	}
 
 	
@@ -39,7 +42,9 @@ class Produk extends CI_Controller {
 	}
 	
 	public function cart(){
-		$this->load->view('Frontend/cart');
+		$this->load->model('shipping_model');
+		$data['province'] = $this->shipping_model->getAllProvinsi();
+		$this->load->view('Frontend/cart', $data);
 	}
 	
 	public function clear_cart()
@@ -68,5 +73,22 @@ class Produk extends CI_Controller {
 		}
 	}
 
+	//mengambil kabupaten/kota berdasarkan provinsi 
+	function load_kabKota(){     
+		$this->load->model('shipping_model'); 
+		return $this->shipping_model->getkabKota($this->input->post('id',TRUE));      
+	}   
+
+	//mengambil ongkir berdasarkan kab dan kurir 
+	function load_ongkir(){     
+		$this->load->model('shipping_model');          
+			return $this->shipping_model->getOngkir($this->input->post('kab',TRUE),$this ->input->post('kurir',TRUE));         
+		}
+
+	//mengambil ongkir berdasarkan kab dan kurir 
+	function load_biaya(){     
+		$this->load->model('shipping_model');          
+			return $this->shipping_model->getTotal($this->input->post('ongkir',TRUE));         
+		}
 }
 

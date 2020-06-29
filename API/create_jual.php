@@ -1,23 +1,22 @@
 <?php 
  include_once('koneksi.php');
 
-	
-
 $email =$_POST['username']; 
-$total=$_POST['total'];
-$pembayaran=$_POST['pembayaran'];
-$kembalian=$_POST['kembalian'];
-
+$pembelian=$_POST['pembelian'];
 $date = date('Y-m-d H:i:s');
 $due_date = date('Y-m-d H:i:s', mktime( date('H'),date('i'),date('s'),date('m'),date('d') + 1,date('Y')));
 $status	= "unpaid";
+$ongkir = $_POST['ongkir'];
+$total = $_POST['total'];
+$alamat_tujuan = $_POST['alamat_tujuan'];
 
 	$ambil=mysqli_query($koneksi,"SELECT kd_kons FROM konsumen WHERE email='$email'"); 
 	$row=mysqli_fetch_row($ambil); 
 	$kode_konsumen=$row[0]; 
 	
 
-$insert = "INSERT INTO invoices(`date`, `kd_kons`, `due_date`, `status`) value('$date', '$kode_konsumen', '$due_date', '$status')";
+$insert = "INSERT INTO invoices(`kd_kons`, `date`, `due_date`, `status`, `pembelian`, `alm_tujuan`, `ongkir`, `total_biaya`) 
+			VALUES ('$kode_konsumen', '$date', '$due_date', '$status', '$pembelian', '$alamat_tujuan', '$ongkir','$total')";
 $exeinsert = mysqli_query($koneksi,$insert);
 $response = array();
 

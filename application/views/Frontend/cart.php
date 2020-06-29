@@ -1,176 +1,27 @@
 <html lang="en">
 	<head>
 		<?php $this->load->view('Frontend/_Partials/head.php') ?>
+
+		<style>
+			input[type=radio]
+			{
+			display:none;
+			}
+			input[type=radio]:checked + label
+			{
+				border-radius: 5px;
+				background: #ffffff !important;
+				box-shadow:  2px 2px 5px #e2e3e5;
+			}
+		</style>
+
 	</head>
 <body id="cart">
 <!-- Content Wrapper -->
 <div id="content-wrapper landingpage" class="d-flex flex-column">
   <!-- Main Content -->
     <div id="content">
-<nav class="navbar navbar-expand topbar mb-4 navbar-custom fixed-top navbar-cart">
-<div class="container">
-	<a class="navbar-brand" > <img src="<?php echo base_url('assets/images/logo.png') ?>"width="100px"> </a>
-
-
-<!-- Sidebar Toggle (Topbar) -->
-<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-	<i class="fa fa-bars"></i>
-</button>
-
-
-<!-- Topbar Search -->
-<form action="<?php echo base_url('produk/hasil') ?>" class="d-none d-sm-inline-block form-inline m-auto mw-100 navbar-search" action="GET">
-	<div class="input-group">
-		<input type="text" class="form-control border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="cari" id="cari">
-		<div class="input-group-append">
-			<button class="btn btn-search" type="submit">
-				<i class="fas fa-search fa-sm text-light"></i>
-			</button>
-		</div>
-	</div>
-</form>
-
-<!-- Topbar Navbar -->
-<ul class="navbar-nav ml-auto">
-<?php if($this->session->userdata('nm_kons')) { ?>
-	<!-- Nav Item - Search Dropdown (Visible Only XS) -->
-	<li class="nav-item dropdown no-arrow d-sm-none">
-		<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<i class="fas fa-search fa-fw"></i>
-		</a>
-		<!-- Dropdown - Messages -->
-		<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-			<form class="form-inline mr-auto w-100 navbar-search">
-				<div class="input-group">
-					<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-					<div class="input-group-append">
-						<button class="btn  btn-search" type="button">
-							<i class="fas fa-search fa-sm text-light"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</li>
-
-	<!-- Nav Item - Alerts -->
-	<li class="nav-item dropdown no-arrow mx-1">
-		<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<i class="fas fa-shopping-cart fa-fw"></i>
-			<!-- Counter - Alerts -->
-			<span class="badge badge-danger badge-counter"><?php echo $this->cart->total_items() ?></span>
-		</a>
-		<!-- Dropdown - Alerts -->
-		<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-			<h6 class="dropdown-header">
-				Keranjang Anda
-			</h6>
-					<?php 
-						foreach ($this->cart->contents() as $items){
-					?>
-						<a class="dropdown-item d-flex align-items-center" href="#">
-								<div class="dropdown-list-image mr-3">
-									<img class="rounded-circle" src="<?php echo base_url('upload/produk/'.$items['images']) ?>" alt="">
-								</div>
-								<div class="font-weight-bold">
-									<div class="text-truncate"><?php echo $items['name'] ?></div>
-									<div class="small text-gray-500"><?php echo "Rp. ".number_format($items['price'],0,',',',') ?></div>
-								</div>
-							<div class="status-indicator position-absolute col-sm-11"> <span class="badge badge-pill badge-info float-right"><?php echo $items['qty'] ?></span>  </div>
-						</a>
-						
-					<?php } ?>
-					<a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('produk/cart') ?>">Detail Keranjang</a>
-				</div>
-	</li>
-
-
-	<div class="topbar-divider d-none d-sm-block"></div>
-
-	<!-- Nav Item - User Information -->
-	<li class="nav-item dropdown no-arrow">
-		<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nm_kons')?></span>
-			<img class="img-profile rounded-circle" src="<?php echo base_url('upload/user/'.$this->session->userdata('foto_kons')) ?>">
-		</a>
-		<!-- Dropdown - User Information -->
-		<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-			<a class="dropdown-item" href="#">
-				<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-				Profile
-			</a>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutCusModal">
-				<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-				Logout
-			</a>
-		</div>
-	</li>
-	<?php } else { ?>
-		
-	<!-- Nav Item - Search Dropdown (Visible Only XS) -->
-	<li class="nav-item dropdown no-arrow d-sm-none">
-		<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<i class="fas fa-search fa-fw"></i>
-		</a>
-		<!-- Dropdown - Messages -->
-		<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-			<form class="form-inline mr-auto w-100 navbar-search">
-				<div class="input-group">
-					<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-					<div class="input-group-append">
-						<button class="btn  btn-search" type="button">
-							<i class="fas fa-search fa-sm text-light"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</li>
-
-	<!-- Nav Item - Alerts -->
-	<li class="nav-item dropdown no-arrow mx-1">
-		<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<i class="fas fa-shopping-cart fa-fw"></i>
-			<!-- Counter - Alerts -->
-			<span class="badge badge-danger badge-counter"><?php echo $this->cart->total_items() ?></span>
-		</a>
-		<!-- Dropdown - Alerts -->
-		<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-			<h6 class="dropdown-header">
-				Keranjang Anda
-			</h6>
-					<?php 
-						foreach ($this->cart->contents() as $items){
-					?>
-						<a class="dropdown-item d-flex align-items-center" href="#">
-								<div class="dropdown-list-image mr-3">
-									<img class="rounded-circle" src="<?php echo base_url('upload/produk/'.$items['images']) ?>" alt="">
-								</div>
-								<div class="font-weight-bold">
-									<div class="text-truncate"><?php echo $items['name'] ?></div>
-									<div class="small text-gray-500"><?php echo "Rp. ".number_format($items['price'],0,',',',') ?></div>
-								</div>
-							<div class="status-indicator position-absolute col-sm-11"> <span class="badge badge-pill badge-info float-right"><?php echo $items['qty'] ?></span>  </div>
-						</a>
-						
-					<?php } ?>
-					<a class="dropdown-item text-center small text-gray-500" href="<?php echo site_url('produk/cart') ?>">Detail Keranjang</a>
-				</div>
-	</li>
-
-
-	<div class="topbar-divider d-none d-sm-block"></div>
-		<li>
-			<a href="<?php echo site_url('user'); ?>" class="btn btn-sm btn-login-cus px-2 mr-2 mt-3">Masuk</a>
-		</li>
-		<li>
-			<a href="<?php echo site_url('register'); ?>" class="btn btn-register btn-sm px-2 mr-2 mt-3">Daftar</a>
-		</li>
-	<?php } ?>
-</ul>
-</div>
-</nav>
+		<?php $this->load->view('Frontend/_Partials/navbar2.php'); ?>
 
 <br><br><br><br>
 
@@ -185,11 +36,10 @@
   </div>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-7">
 		<?php if ($this->session->flashdata('success')): ?>
 								<div class="alert alert-success" role="alert">
 										<?php echo $this->session->flashdata('success'); ?>
-										Kode Pembayaran Anda : 
 								</div>
 				<?php endif; ?>
 			<?php 
@@ -216,17 +66,175 @@
 				}
 			?>
 		</div>
-		<div class="col-md-4">
-			<div class="card-style my-3 position-fixed col-md-3">
+		<div class="col-md-5">
+			<div class="card-style-total my-3 col-md-12">
 				<div class="card-body">
-					<h5 class="card-title">Total Harga</h5>
-						<h5 class="card-text-total card-style-cart py-3 text-center"><?php echo 'Rp. '.number_format($this->cart->total()) ?></h6>
-						<button class="btn btn-success btn-block shadow mt-5"  data-toggle="modal" data-target="#modalCheckout">Beli <?php echo '('.$this->cart->total_items().')'?></button>
+					<form action="<?php echo site_url('order') ?>" method="post">
+					<div class="row justify-content-between">
+						<div class="col-8">
+							<h5 class="card-title">Data Penerima</h5>
+						</div>
+						<div class="col-4">
+							<h6 class="text-data text-gray-500">Belanja :</h6>
+							<p class="font-weight-bold text-danger" id="total"><?php echo 'Rp. '.$this->cart->total() ?></p>
+						</div>
+					</div>
+					
+
+							<div class="row">
+								<div class="col-md-12 mb-2 mt-3">
+									<h6 class="text-data text-gray-500">Nama Konsumen :</h6>
+									<h5 class="text-data2 text-gray-600"><?php echo $this->session->userdata('nm_kons')?></h5>
+									<input type="hidden" name="alamat" value="<?php echo $this->session->userdata('alm_kons')?>">
+								</div>
+							</div>
+
+							<div class="row">
+							<div class="col-md-12 mb-2">
+								<form action="<?=site_url('order')?>" method="post">
+									<div class="form-row">
+									<div class="row">
+										<div class="col-md-6">
+											<label for="province"><h6 class="text-data text-gray-500">Provinsi</h6> </label>             
+											<select class="form-control form-control-sm autocomplete" id="province" name="province">
+											<option selected>-- Pilih Provinsi --</option> 
+												<?php                
+													$data = json_decode($province, true);                 
+													for ($i=0; $i < count($data['rajaongkir']['results']); $i++) {                      
+														echo "<option value='".$data['rajaongkir']['results'][$i]['province_id']."'>".$data['rajaongkir']['results'][$i]['province']."</option>";                 
+													}             
+												?>
+											</select>
+										</div>
+										<div class="col-md-6">
+											<label for="kabKota"><h6 class="text-data text-gray-500">Kab/Kota</h6> </label>             
+												<select class="form-control form-control-sm autocomplete" id="kabKota" name="kabKota" disabled>             
+													<option selected>-- Pilih Kab/Kota --</option>                                                                         
+												</select> 
+										</div>
+									</div>
+									</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 mb-2">
+							<label for="jasa pengiriman"> <h6 class="text-data text-gray-500">Jasa Pengiriman</h6> </label>   
+							<div class="row justify-content-md-center">
+								<div class="col-md-4">
+									<input type="radio" name="kurir" value="pos" id="pos" checked>             
+									<label for="pos" class="col-12 card py-2 bg-gray-100">             
+										<img src="<?php echo base_url('assets/images/pos.png') ?>" width="70px" alt="" class="mx-auto d-block">             
+									</label> 
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="kurir" value="jne" id="jne">             
+									<label for="jne" class="col-12 card py-2 bg-gray-100">             
+										<img src="<?php echo base_url('assets/images/jne.png') ?>" width="70px" alt="" class="mx-auto d-block">         
+									</label>   
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="kurir" value="tiki" id="tiki">             
+									<label for="tiki" class="col-12 card py-2 bg-gray-100">             
+										<img src="<?php echo base_url('assets/images/tiki.png') ?>" width="70px" alt="" class="mx-auto d-block">            
+									</label>
+								</div>
+							</div> 
+							</div>
+						</div>
+
+						<div class="form-group">         
+						<label> <h6 class="text-data text-gray-500">Biaya Pengiriman</h6> </label>       
+
+						<div class="col-12 d-flex flex-column kurir" id="biaya">
+						</div>
+
+						<div class="total col-8 float-right my-3 text-data text-gray-500 ">
+							<div class="row my-2">
+								<div class="col-md-6">Biaya Ongkir : </div>
+								<div class="col-md-6 text-right text-muted" id="ongkir">Rp. 0</div>
+							</div>
+							<div class="row my-2">
+								<div class="col-md-6">Total Bayar:</div>
+								<div class="col-md-6 text-right text-muted" id="totalAll"></div>
+							</div>
+						</div>     
+						
+						<button type="submit" class="btn btn-success btn-block shadow mt-5" id="myBtn" disabled>Beli <?php echo '('.$this->cart->total_items().')'?> </button>
+						<!-- <button class="btn btn-success btn-block shadow mt-5"  data-toggle="modal" data-target="#modalCheckout">Beli <?php echo '('.$this->cart->total_items().')'?></button> -->
+					</form>
 					</div>
 			</div>
 		</div>
 	</div>
 </div>
 	<?php $this->load->view('Frontend/_Partials/modal.php') ?>
+
+	<script>
+		$('#province').change(function(){      
+			$('#kabKota').attr('disabled', false);     
+			var id=$(this).val();    
+			$.ajax({        
+				  url : "<?php echo site_url('produk/load_kabKota');?>",        
+					headers: {  'Access-Control-Allow-Origin': '*' },         
+					method : "POST",        
+					data : {id: id},        
+					async : true,         
+						success: function(data){            
+								$('#kabKota').html(data); //mengisi option pada kab/kota            
+								$('#biaya').html("");   //membuat div biaya kosong                     
+								}    
+				});    
+		return false;
+		});
+
+//ketika kabupaten dipilih 
+	$('#kabKota').change(function(){      
+		var kab=$('#kabKota').val(); //mengambil id kab     
+		var kurir= 'pos'; //menentukan kurir     
+			load_ongkir(kab,kurir);     
+			return false; 
+		}); 
+
+//ketika kurir dipilih   
+	$('input[name="kurir"]').change(function(){    
+		$('#ongkir').html('Rp. 0');
+		$('#totalAll').html($('#total').html());
+		
+		var kab=$('#kabKota').val(); //mengambil id kab     
+		var kurir=$(this).val();     //mengambil value kurir
+		load_ongkir(kab,kurir);                
+		return false; 
+	});
+
+
+	//fungsi menampilkan biaya ongkir 
+	function load_ongkir(kab,kurir){    
+		$.ajax({         
+			url : "<?php echo site_url('produk/load_ongkir');?>",         
+			headers: {  'Access-Control-Allow-Origin': '*' },        
+			method : "POST",         
+			data : {kab: kab, kurir: kurir},        
+			async : true,         
+			success: function(data){             
+				if(kab>0){                
+					$('#biaya').html(data); 
+
+					$('input[name="ongkir"]').change(function(){
+						ongkir = $(this).val();
+						$('#ongkir').html('Rp. '+ongkir);
+						total = $('#total').html().replace('Rp. ','').replace(',','');
+						$('#totalAll').html( 'Rp . '+(parseInt(total) + parseInt(ongkir)) );
+						
+						if(ongkir > 0){
+							document.getElementById("myBtn").disabled = false;
+						}
+					});
+				}       
+			}        
+		}); 
+
+}
+</script>
 </body>
 </html>

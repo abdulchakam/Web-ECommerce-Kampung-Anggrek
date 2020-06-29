@@ -1,17 +1,17 @@
-  <!-- Logout Modal-->
+	<!-- Logout Modal-->
   <div class="modal fade" id="logoutCusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin Ingin Keluar?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Pilih "Keluar" Jika Anda Yakin Ingin Keluar </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?php echo site_url('user/logout_member') ?>">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-danger" href="<?php echo site_url('user/logout') ?>">Keluar</a>
         </div>
       </div>
     </div>
@@ -45,9 +45,9 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-					<h4 class="text-center text-info">Data Konsumen</h4>
+					<h4 class="text-center text-info">Data Penerima</h4>
 					<div class="container-fluid">
-						<div class="row">
+					<div class="row">
 							<div class="col-md-10 mb-2 mt-3">
 								<h6 class="text-data text-gray-500">Nama Konsumen :</h6>
 								<h5 class="text-data2 text-gray-600"><?php echo $this->session->userdata('nm_kons')?></h5>
@@ -79,6 +79,7 @@
 								<h5 class="text-data2 text-gray-600"><?php echo $this->session->userdata('phone')?></h6>
 							</div>
 						</div>
+
 					</div>
 					<div class="text-right mt-4 my-3 mx-2">
 						<button type="button" class="btn btn-outline-info btn-sm mr-3" data-dismiss="modal">Kembali</button> 
@@ -89,7 +90,7 @@
 		</div>
 	</div>
 	<?php } else { ?>
-<!-- Modal Order Barang -->
+
 <div id="modalCheckout" class="modal fade modal-checkout" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -134,5 +135,4 @@
     </div>
   </div>
 </div>
-
 

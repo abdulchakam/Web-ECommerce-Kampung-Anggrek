@@ -12,7 +12,8 @@ $email=$_POST['email'];
 $password=md5($_POST['password']);
 
 
-$insert = "INSERT INTO konsumen VALUES('$kode','$nama','$alamat','$kota','$kodepos','$phone','$email','default.png','$password')";
+$insert = "INSERT INTO konsumen (`kd_kons`, `nm_kons`, `alm_kons`, `kota_kons`, `kd_pos`, `phone`, `email`, `foto_kons`, `password`) 
+VALUES('$kode','$nama','$alamat','$kota','$kodepos','$phone','$email','default.png','$password')";
 
 $exeinsert = mysqli_query($koneksi,$insert);
 $response = array();

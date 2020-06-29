@@ -5,6 +5,7 @@
 	
 	//Variabel $_tabel (Nama Tabel di database)
 	private $_tabel = "konsumen";
+	private $primaryKey = "id";
 
 	//Variabel untuk masing-masing field atau kolom
 	public $kd_kons;
@@ -136,7 +137,7 @@
 					}
 			}
 
-		private function kode(){
+			public function kode(){
 			$this->db->select('RIGHT(konsumen.kd_kons,1) as id_customer', FALSE);
 			$this->db->order_by('id_customer','DESC');    
 			$this->db->limit(1);    
@@ -150,7 +151,7 @@
 				 $kode = 1;  //cek jika kode belum terdapat pada table
 			}
 				$tgl=date('d'); 
-				$batas = str_pad($kode, 3, "0", STR_PAD_LEFT);    
+				$batas = str_pad($kode, 2, "0", STR_PAD_LEFT);    
 				$kodetampil = "KONS".$tgl.$batas;  //format kode
 				return $kodetampil;  
 			}
@@ -171,4 +172,38 @@
 					return array();
 				}
 			}
+
+			public function checkUser($userData = array()){
+        if(!empty($userData)){
+            //check whether user data already exists in database with same oauth info
+            $this->db->select($this->primaryKey);
+            $this->db->from($this->_tabel);
+            $this->db->where(array('oauth_provider'=>$userData['oauth_provider'], 'oauth_uid'=>$userData['oauth_uid']));
+            $prevQuery = $this->db->get();
+            $prevCheck = $prevQuery->num_rows();
+            
+            if($prevCheck > 0){
+                $prevResult = $prevQuery->row_array();
+                
+                //update user data
+                $userData['modified'] = date("Y-m-d H:i:s");
+                $update = $this->db->update($this->_tabel, $userData, array('id' => $prevResult['id']));
+                
+                //get user ID
+                $userID = $prevResult['id'];
+            }else{
+                //insert user data
+                $userData['created']  = date("Y-m-d H:i:s");
+                $userData['modified'] = date("Y-m-d H:i:s");
+                $insert = $this->db->insert($this->_tabel, $userData);
+                
+                //get user ID
+                $userID = $this->db->insert_id();
+            }
+        }
+        
+        //return user ID
+        return $userID?$userID:FALSE;
+		}
+
 	}

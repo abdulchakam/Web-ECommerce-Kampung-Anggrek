@@ -48,6 +48,20 @@
 										<div class="form-group ">
 											<div class="col-sm-offset-2 col-sm-8 m-auto">
 												<button type="submit" class="btn btn-register btn-md btn-block ">Masuk</button>
+												<h6 class="text-center mt-4">Atau</h6>
+												<?php if(!empty($authURL)){ ?>
+													<a href="<?php echo $authURL; ?>"><img src="<?php echo base_url('assets/images/button_login_fb.png'); ?>" width="250px"></a>
+												<?php }else{ ?>
+												<h2>Facebook Profile Details</h2>
+													<div class="ac-data">
+															<img src="<?php echo $userData['foto_kons']; ?>"/>
+															<p><b>Facebook ID:</b> <?php echo $userData['oauth_uid']; ?></p>
+															<p><b>Name:</b> <?php echo $userData['nm_kons']; ?></p>
+															<p><b>Email:</b> <?php echo $userData['email']; ?></p>
+															<p><b>Logged in with:</b> Facebook</p>
+															<p><b>Logout from <a href="<?php echo $logoutURL; ?>">Facebook</a></p>
+													</div>
+												<?php } ?>
 											</div>
 											<p class="text-center text-gray-600 mt-3">Belum Punya Akun? <a href="<?php echo site_url('register'); ?>">Daftar</a> </p>
 										</div>
@@ -57,6 +71,7 @@
 							</form>
 						</div>
 						<a href="<?php echo base_url() ?>" class="btn btn-add-to-cart btn-sm mt-4"> <i class="fas fa-arrow-left"></i> Kembali Belanja</a>
+
 				</div>
 		</div>
 		</div>

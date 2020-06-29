@@ -56,6 +56,18 @@
 		return $this->db->get($this->_tabel)->result();
 	}
 
+		//Function untuk menampilkan produk terlaris
+		public function getBestSell(){
+			$this->db->select('barang.kd_brg, barang.nm_brg, barang.harga, barang.deskripsi, barang.gambar, SUM(orders.quantity) AS qty');
+			$this->db->from('barang');
+			$this->db->join('orders', 'barang.kd_brg=orders.kd_brg');
+			$this->db->group_by('kd_brg');
+			$this->db->order_by('qty','desc');
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+
 	//Function untuk mengambil data berdasarkan id (kd_brg)
 	public function getById($id)
     {

@@ -4,7 +4,7 @@
 }
 #produk{
 	margin-top: -35px;
-	height: 200vh;
+	height: auto;
 	background-image: url("../assets/images/background.png");
 	background-repeat: repeat;
 }
@@ -189,6 +189,16 @@ box-shadow: inset 4px 4px 6px #ecedef,
 							  -6px -6px 12px #ffffff;
 }
 
+.card-style-total{
+	height: auto;
+	border-radius: 10px;
+	background: #F8F9FC;
+	box-shadow:  6px 6px 12px #eeeff2, 
+								-6px -6px 12px #ffffff;
+	overflow: auto;
+}
+
+
 .card-style-cart{
 	border-radius: 10px;
 	background: #F8F9FC;
@@ -326,5 +336,13 @@ box-shadow: inset 4px 4px 6px #ecedef,
 	margin-top: -5px;
 	font-weight: 600;
 	color: rgb(236, 92, 25) !important;
+}
+.total{
+	border-radius: 7px;
+	background: #F8F9FC;
+	box-shadow:  5px 5px 10px #f1f2f4, 
+							 -5px -5px 10px #ffffff;
+						padding: 8px;
+						font-family:  Montserrat Medium !important;
 }
 

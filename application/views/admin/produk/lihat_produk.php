@@ -36,7 +36,16 @@
 					<!-- TABLE CONTENT -->
 					<div class="card shadow mb-4">
             <div class="card-header py-3 bg-gradient-primary">
+						<div class="row justify-content-between">
+							<div class="col-md-4">
 								<a href="<?php echo site_url('admin/produk/add') ?>" class="text-gray-100"><i class="fa fa-plus"></i> Tambah Data</a>
+							</div>
+							<div class="col-md-4">
+								<?=anchor('admin/produk/export_excel','Export Excel',
+										['class'=>'btn btn-default btn-sm btn-success float-right']);
+									?>
+							</div>
+						</div>
             </div>
             <div class="card-body">
               <div class="table-responsive">

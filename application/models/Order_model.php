@@ -9,7 +9,13 @@ class Order_Model extends CI_Model {
 			'kd_kons'   => $this->session->userdata('kd_kons'),
 			'date'		=> date('Y-m-d H:i:s'),
 			'due_date'	=> date('Y-m-d H:i:s', mktime( date('H'),date('i'),date('s'),date('m'),date('d') + 1,date('Y'))),
-			'status'	=> 'unpaid'
+			'status'	=> 'unpaid',
+			'pembelian' => $this->cart->total(),
+			'alm_tujuan' 	=> $this -> input -> post('alamat'),
+			'kode_kab'	=> $this -> input -> post('kabKota'),
+			'kurir' 	=> $this -> input -> post('kurir'),
+			'ongkir' 	=> $this -> input -> post('ongkir'),
+			'total_biaya' => (int) $this -> input -> post('ongkir') + (int) $this->cart->total(),
 		);
 		
 		$this->db->insert('invoices', $invoice);
@@ -43,7 +49,9 @@ class Order_Model extends CI_Model {
 	
     public function all()
     {
-		$this->db->select('invoices.id, konsumen.nm_kons, invoices.date, invoices.due_date, invoices.status');
+		$this->db->select('invoices.id, konsumen.nm_kons, invoices.date,
+		invoices.alm_tujuan, invoices.pembelian, invoices.ongkir, invoices.total_biaya');
+		
         $this->db->from('invoices');
         $this->db->join('konsumen','invoices.kd_kons=konsumen.kd_kons');
         $query=$this->db->get();
@@ -72,5 +80,19 @@ class Order_Model extends CI_Model {
         } else {
             return false;
         }
-    }
-}
+		}
+		
+		public function get_invoice_by_user() { 
+			$hasil = $this->db->where('kd_kons',$this->session->userdata('kd_kons'))->get('invoices');   
+					if($hasil->num_rows() > 0){             
+						return $hasil->result();     
+		    	} else {           
+						return false;       
+						}   
+		}
+
+		public function update($id, $data_invoice){
+			$this->db->where('id', $id)->update('invoices', $data_invoice); 
+		}
+	}
+
