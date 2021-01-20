@@ -100,8 +100,11 @@
 
 								<div class="form-group">
 									<label for="deskripsi">Deskripsi*</label>
+									<textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor 4.
+            </textarea>
 									<textarea class="form-control <?php echo form_error('deskripsi') ? 'is-invalid':'' ?>"
-									name="deskripsi" placeholder="Produk Deskripsi..."></textarea>
+									name="deskripsi" placeholder="Produk Deskripsi..." id="deskripsi"></textarea>
 									<div class="invalid-feedback">
 										<?php echo form_error('deskripsi') ?>
 									</div>

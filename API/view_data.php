@@ -1,9 +1,10 @@
 <?php
+header('Content-Type: application/json');
 include_once('koneksi.php');
 
 class usr{}
-$kode_konsumen = $_POST['kd_kons'];
-$query = "SELECT * FROM invoices WHERE kd_kons='$kode_konsumen' ORDER BY id DESC limit 1";
+$id = $_POST['no_nota'];
+$query = "SELECT * FROM invoices WHERE id='$id' ORDER BY id DESC limit 1";
 $result = mysqli_query($koneksi,$query);
 $row = mysqli_fetch_array($result);
 $response = array();

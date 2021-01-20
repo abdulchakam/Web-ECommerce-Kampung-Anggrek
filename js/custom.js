@@ -73,8 +73,4 @@ $(".input-number").keydown(function (e) {
 			}
 	});
 	// End javaScript Button minus plus input
-
-
-
-
-
+	CKEDITOR.replace( 'editor1' );

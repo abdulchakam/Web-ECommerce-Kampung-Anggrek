@@ -1,17 +1,22 @@
 <?php 
  include_once('koneksi.php');
 
-$id =$_POST['id']; 
+$id =$_POST['no_nota']; 
 $gambar=$_POST['gambar'];
 $status	= "paid";
 
-$query = "UPDATE invoices SET `status`='$status', `image`='$gambar' WHERE id='$id'";
+$nama_file = "BuktiPembayaran-".$id.".png";
+		
+$path = "../upload/bukti/".$nama_file;
+
+$query = "UPDATE invoices SET `status`='$status', `image`='$nama_file' WHERE id='$id'";
 $result = mysqli_query($koneksi,$query);
 
 $response = array();
 if($result)
 {
-$response['message'] = "Success ! Data berhasil diperbarui";
+	file_put_contents($path,base64_decode($gambar));
+	$response['message'] = "Success ! Data berhasil diperbarui";
 }
 else
 {

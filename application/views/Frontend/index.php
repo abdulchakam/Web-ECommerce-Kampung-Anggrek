@@ -43,7 +43,7 @@
 							<h5 class="card-title text-gray-600"><?php echo $produk->nm_brg ?></h5>
 							<p class="card-text">
 								<?php
-									echo (str_word_count($produk->deskripsi) > 5 ? 
+									echo (str_word_count($produk->deskripsi) > 5? 
 									substr($produk->deskripsi,0,45)."..." :  $produk->deskripsi);
 								?>		
 							</p>
@@ -79,7 +79,7 @@
 							<p class="card-text">
 								<?php
 									echo (str_word_count($produk->deskripsi) > 5 ? 
-									substr($produk->deskripsi,0,45)."..." :  $produk->deskripsi);
+									substr($produk->deskripsi,0,60)."..." :  $produk->deskripsi);
 								?>		
 							</p>
 							<h6 class="card-text-price"><?php echo 'Rp. '.number_format($produk->harga) ?></h6>

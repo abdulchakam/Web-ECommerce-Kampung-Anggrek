@@ -1,4 +1,5 @@
 <?php 
+header('Content-Type: application/json');
 	include_once('koneksi.php'); 
 	$query = "SELECT * FROM barang";
 	$result = mysqli_query($koneksi,$query);
